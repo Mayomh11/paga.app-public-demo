@@ -1,6 +1,10 @@
-# React + TypeScript + Vite
+# PaGaME Demo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## 🔒 Proprietary Software Notice
+
+**© 2024 Mayomh11. All Rights Reserved.**
+
+This repository contains proprietary software for the **PaGaME** payment application demo.
 
 Currently, two official plugins are available:
 

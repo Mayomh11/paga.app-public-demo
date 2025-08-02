@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { X, Mail, Check } from 'lucide-react';
+import { X, Mail, Check, AlertCircle } from 'lucide-react';
 import { useAnalytics } from '../hooks/useAnalytics';
+import { addToBetaWaitlist } from '../lib/supabase';
 
 interface BetaWaitlistModalProps {
   isOpen: boolean;
@@ -12,6 +13,7 @@ const BetaWaitlistModal: React.FC<BetaWaitlistModalProps> = ({ isOpen, onClose }
   const [email, setEmail] = useState('');
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [error, setError] = useState<string | null>(null);
   const { trackBetaSignup } = useAnalytics();
 
   // Track when modal opens
@@ -27,9 +29,12 @@ const BetaWaitlistModal: React.FC<BetaWaitlistModalProps> = ({ isOpen, onClose }
 
     trackBetaSignup('submitted', email);
     setIsLoading(true);
+    setError(null);
     
-    // Simulate API call
-    setTimeout(() => {
+    try {
+      // Actually save to Supabase
+      await addToBetaWaitlist(email);
+      
       setIsLoading(false);
       setIsSubmitted(true);
       trackBetaSignup('completed', email);
@@ -40,7 +45,11 @@ const BetaWaitlistModal: React.FC<BetaWaitlistModalProps> = ({ isOpen, onClose }
         setIsSubmitted(false);
         setEmail('');
       }, 2000);
-    }, 1000);
+    } catch (error: any) {
+      setIsLoading(false);
+      setError(error.message || 'Failed to join waitlist. Please try again.');
+      console.error('Beta signup error:', error);
+    }
   };
 
   return (
@@ -104,6 +113,13 @@ const BetaWaitlistModal: React.FC<BetaWaitlistModalProps> = ({ isOpen, onClose }
                       disabled={isLoading}
                     />
                   </div>
+                  
+                  {error && (
+                    <div className="error-message">
+                      <AlertCircle size={16} />
+                      <span>{error}</span>
+                    </div>
+                  )}
                   
                   <div className="modal-actions">
                     <button 

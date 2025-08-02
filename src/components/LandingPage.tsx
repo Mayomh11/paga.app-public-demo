@@ -1,15 +1,37 @@
+/*
+ * PaGaME - Payment Application Demo
+ * © 2024 Mayomh11. All Rights Reserved.
+ * 
+ * This code is proprietary and confidential. Unauthorized copying,
+ * distribution, modification, or use is strictly prohibited.
+ */
+
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { ArrowRight, Zap, Globe, DollarSign, Users, TrendingUp, Star, PlayCircle, QrCode } from 'lucide-react';
+import { ArrowRight, Zap, Globe, DollarSign, Users, TrendingUp, Star, PlayCircle, QrCode, Mail } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import QRCodeModal from './QRCodeModal';
+import BetaWaitlistModal from './BetaWaitlistModal';
 
 const LandingPage: React.FC = () => {
   const navigate = useNavigate();
   const [isQRModalOpen, setIsQRModalOpen] = useState(false);
+  const [isBetaModalOpen, setIsBetaModalOpen] = useState(false);
 
   return (
     <div className="landing-page">
+      {/* Legal Notice Banner */}
+      <div style={{
+        background: 'linear-gradient(135deg, #1a202c 0%, #2d3748 100%)',
+        color: 'white',
+        padding: '8px 16px',
+        textAlign: 'center',
+        fontSize: '13px',
+        borderBottom: '2px solid #ff6b6b'
+      }}>
+        🔒 <strong>PROPRIETARY DEMO</strong> - © 2024 Mayomh11 - Unauthorized copying, distribution, or commercial use prohibited
+      </div>
+      
       {/* Hero Section */}
       <section className="hero-section">
         <div className="hero-content">
@@ -83,6 +105,20 @@ const LandingPage: React.FC = () => {
               >
                 <PlayCircle size={20} />
                 <span>View Interactive Demo</span>
+                <ArrowRight size={16} />
+              </button>
+              
+              <button
+                className="demo-button beta"
+                onClick={() => setIsBetaModalOpen(true)}
+                style={{
+                  background: 'linear-gradient(135deg, #ff6b6b 0%, #ee5a24 100%)',
+                  color: 'white',
+                  border: 'none'
+                }}
+              >
+                <Mail size={20} />
+                <span>Join Beta List</span>
                 <ArrowRight size={16} />
               </button>
               
@@ -404,12 +440,30 @@ const LandingPage: React.FC = () => {
               <span>• Market analysis: World Bank & Inter-American Development Bank</span>
             </div>
           </div>
+          
+          <div className="footer-copyright">
+            <div className="copyright-line">
+              <span>© 2024 Mayomh11. All Rights Reserved.</span>
+              <span>PaGaME™ is a trademark of Mayomh11.</span>
+            </div>
+            <div className="protection-notice">
+              🔒 Proprietary software. Unauthorized copying, distribution, or commercial use is strictly prohibited.
+            </div>
+            <div className="demo-notice">
+              ⚠️ Demo version only. Not for commercial use. All features subject to change.
+            </div>
+          </div>
         </div>
       </footer>
       
       <QRCodeModal 
         isOpen={isQRModalOpen} 
         onClose={() => setIsQRModalOpen(false)} 
+      />
+      
+      <BetaWaitlistModal 
+        isOpen={isBetaModalOpen} 
+        onClose={() => setIsBetaModalOpen(false)} 
       />
     </div>
   );

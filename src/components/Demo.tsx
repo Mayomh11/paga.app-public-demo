@@ -1,3 +1,10 @@
+/*
+ * PaGaME - Interactive Demo Component
+ * © 2024 Mayomh11. All Rights Reserved.
+ * 
+ * Proprietary demo software. Unauthorized use prohibited.
+ */
+
 import React, { useState, useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Zap, Globe, DollarSign, Star } from 'lucide-react';
@@ -61,6 +68,18 @@ const Demo: React.FC = () => {
 
   return (
     <div className="app">
+      {/* Legal Notice Banner */}
+      <div style={{
+        background: 'linear-gradient(135deg, #1a202c 0%, #2d3748 100%)',
+        color: 'white',
+        padding: '8px 16px',
+        textAlign: 'center',
+        fontSize: '13px',
+        borderBottom: '2px solid #ff6b6b'
+      }}>
+        🔒 <strong>PROPRIETARY DEMO</strong> - © 2024 Mayomh11 - Unauthorized copying, distribution, or commercial use prohibited
+      </div>
+      
       {/* Header */}
       <header className="app-header">
         <div className="header-content">
@@ -72,10 +91,33 @@ const Demo: React.FC = () => {
             >
               ⚡
             </motion.div>
-            <h1>PaGaME</h1>
+            <h1>
+              <a href="/" style={{ textDecoration: 'none', color: 'inherit' }}>
+                PaGaME
+              </a>
+            </h1>
           </div>
           
           <div className="header-info">
+            <motion.button
+              className="back-home-btn"
+              onClick={() => window.location.href = '/'}
+              whileHover={{ scale: 1.05 }}
+              whileTap={{ scale: 0.95 }}
+              style={{
+                background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)',
+                color: 'white',
+                border: 'none',
+                padding: '8px 16px',
+                borderRadius: '20px',
+                fontSize: '14px',
+                fontWeight: '600',
+                cursor: 'pointer',
+                marginRight: '16px'
+              }}
+            >
+              ← Back to Home
+            </motion.button>
             <div className="status-badge">
               <div className="status-dot" />
               In Development
