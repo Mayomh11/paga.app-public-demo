@@ -9,7 +9,6 @@ import { Shield, AlertTriangle, Check } from 'lucide-react';
 
 const LegalNoticeModal: React.FC = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const [hasAccepted, setHasAccepted] = useState(false);
 
   useEffect(() => {
     // Check if user has already accepted terms
@@ -22,7 +21,6 @@ const LegalNoticeModal: React.FC = () => {
   const handleAccept = () => {
     localStorage.setItem('pagame_legal_accepted', 'true');
     localStorage.setItem('pagame_acceptance_date', new Date().toISOString());
-    setHasAccepted(true);
     setIsVisible(false);
   };
 
