@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowLeft, FileText, Shield, AlertTriangle, Scale, Coins, Users, Star, Zap, Lock, Globe } from 'lucide-react';
+import { ArrowLeft, Shield, AlertTriangle, Scale, Coins, Users, Star, Zap, Lock, Globe } from 'lucide-react';
 import { Link } from 'react-router-dom';
 import { motion } from 'framer-motion';
 
