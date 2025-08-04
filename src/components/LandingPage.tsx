@@ -8,6 +8,7 @@
 
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
+import { Link } from 'react-router-dom';
 import { ArrowRight, Zap, Globe, DollarSign, Users, TrendingUp, Star, PlayCircle, QrCode, Mail } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import QRCodeModal from './QRCodeModal';
@@ -409,52 +410,255 @@ const LandingPage: React.FC = () => {
         </motion.div>
       </section>
 
-      {/* Footer */}
-      <footer className="landing-footer">
-        <div className="footer-content">
-          <div className="footer-brand">
-            <h3>⚡ PaGaME</h3>
-            <p>The future of global payments</p>
+      {/* Professional Footer */}
+      <motion.footer 
+        style={{
+          background: 'linear-gradient(135deg, #1a202c 0%, #2d3748 100%)',
+          borderTop: '1px solid rgba(255, 255, 255, 0.1)',
+          marginTop: '4rem'
+        }}
+        initial={{ opacity: 0, y: 50 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.8, delay: 0.2 }}
+      >
+        {/* Main Footer Content */}
+        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '4rem 2rem 2rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '3rem', marginBottom: '3rem' }}>
+            
+            {/* Brand Section */}
+            <div>
+              <div style={{ marginBottom: '1.5rem' }}>
+                <h3 style={{
+                  fontSize: '2rem',
+                  fontWeight: 800,
+                  background: 'linear-gradient(135deg, #60a5fa 0%, #a855f7 100%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',
+                  backgroundClip: 'text',
+                  marginBottom: '0.5rem'
+                }}>
+                  ⚡ PaGaME
+                </h3>
+                <p style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '1.1rem', lineHeight: 1.6 }}>
+                  The future of global payments - <span style={{
+                    background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+                    WebkitBackgroundClip: 'text',
+                    WebkitTextFillColor: 'transparent',
+                    backgroundClip: 'text',
+                    fontWeight: 600
+                  }}>Making crypto payments simple</span>
+                </p>
+              </div>
+              
+              {/* Status Badge */}
+              <div style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                gap: '0.5rem',
+                background: 'rgba(16, 185, 129, 0.1)',
+                backdropFilter: 'blur(10px)',
+                padding: '0.75rem 1.25rem',
+                borderRadius: '20px',
+                border: '1px solid rgba(16, 185, 129, 0.3)',
+                color: '#10b981',
+                fontSize: '0.9rem',
+                fontWeight: 600
+              }}>
+                <div style={{ width: '8px', height: '8px', background: '#10b981', borderRadius: '50%', animation: 'pulse 2s infinite' }}></div>
+                In Development • Launching Q3 2026
+              </div>
+            </div>
+
+            {/* Legal & Company Info */}
+            <div>
+              <h4 style={{ color: 'white', fontSize: '1.25rem', fontWeight: 600, marginBottom: '1.5rem' }}>
+                Company
+              </h4>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
+                  <div style={{
+                    width: '32px', height: '32px', background: 'linear-gradient(135deg, #60a5fa 0%, #a855f7 100%)',
+                    borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center'
+                  }}>
+                    <Users className="h-4 w-4 text-white" />
+                  </div>
+                  <div>
+                    <p style={{ color: 'white', fontWeight: 500, margin: 0 }}>Created by Mayomh11</p>
+                    <p style={{ color: 'rgba(255, 255, 255, 0.6)', fontSize: '0.85rem', margin: 0 }}>Solo Developer & Founder</p>
+                  </div>
+                </div>
+                
+                <div style={{ paddingLeft: '2.5rem' }}>
+                  <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                    <Link 
+                      to="/privacy-policy" 
+                      style={{ 
+                        color: '#60a5fa', 
+                        textDecoration: 'none',
+                        fontSize: '0.95rem',
+                        fontWeight: 500,
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.5rem',
+                        transition: 'all 0.3s ease'
+                      }}
+                      onMouseOver={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                        (e.target as HTMLAnchorElement).style.color = '#93c5fd';
+                        (e.target as HTMLAnchorElement).style.transform = 'translateX(4px)';
+                      }}
+                      onMouseOut={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                        (e.target as HTMLAnchorElement).style.color = '#60a5fa';
+                        (e.target as HTMLAnchorElement).style.transform = 'translateX(0px)';
+                      }}
+                    >
+                      🛡️ Privacy Policy
+                    </Link>
+                    <Link 
+                      to="/terms" 
+                      style={{ 
+                        color: '#60a5fa', 
+                        textDecoration: 'none',
+                        fontSize: '0.95rem',
+                        fontWeight: 500,
+                        display: 'flex',
+                        alignItems: 'center',
+                        gap: '0.5rem',
+                        transition: 'all 0.3s ease'
+                      }}
+                      onMouseOver={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                        (e.target as HTMLAnchorElement).style.color = '#93c5fd';
+                        (e.target as HTMLAnchorElement).style.transform = 'translateX(4px)';
+                      }}
+                      onMouseOut={(e: React.MouseEvent<HTMLAnchorElement>) => {
+                        (e.target as HTMLAnchorElement).style.color = '#60a5fa';
+                        (e.target as HTMLAnchorElement).style.transform = 'translateX(0px)';
+                      }}
+                    >
+                      ⚖️ Terms of Service
+                    </Link>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Data Sources */}
+            <div>
+              <h4 style={{ color: 'white', fontSize: '1.25rem', fontWeight: 600, marginBottom: '1.5rem' }}>
+                Research & Data
+              </h4>
+              <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem' }}>
+                {[
+                  { source: 'Migration Policy Institute', year: '2024', type: 'Dominican population data' },
+                  { source: 'Central Bank of DR', year: '2024', type: 'Remittance statistics' },
+                  { source: 'World Bank & IDB', year: '2024', type: 'Market analysis' }
+                ].map((item, index) => (
+                  <div key={index} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem' }}>
+                    <div style={{
+                      width: '6px', height: '6px', background: '#10b981', borderRadius: '50%',
+                      marginTop: '0.5rem', flexShrink: 0
+                    }}></div>
+                    <div>
+                      <p style={{ color: 'rgba(255, 255, 255, 0.9)', fontSize: '0.9rem', margin: 0, fontWeight: 500 }}>
+                        {item.source} {item.year}
+                      </p>
+                      <p style={{ color: 'rgba(255, 255, 255, 0.6)', fontSize: '0.8rem', margin: 0 }}>
+                        {item.type}
+                      </p>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+
           </div>
-          
-          <div className="footer-info">
-            <div className="footer-item">
-              <strong>Created by:</strong>
-              <span>Mayomh11</span>
+
+          {/* Warning Notices */}
+          <div style={{ 
+            borderTop: '1px solid rgba(255, 255, 255, 0.1)', 
+            paddingTop: '2rem', 
+            marginBottom: '2rem',
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gap: '1.5rem'
+          }}>
+            <div style={{
+              background: 'rgba(255, 107, 107, 0.1)',
+              border: '1px solid rgba(255, 107, 107, 0.3)',
+              borderRadius: '12px',
+              padding: '1rem',
+              display: 'flex',
+              alignItems: 'flex-start',
+              gap: '0.75rem'
+            }}>
+              <div style={{ color: '#ff6b6b', marginTop: '0.125rem' }}>🔒</div>
+              <div>
+                <p style={{ color: 'white', fontWeight: 600, margin: '0 0 0.25rem 0', fontSize: '0.9rem' }}>
+                  Proprietary Software
+                </p>
+                <p style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '0.8rem', margin: 0, lineHeight: 1.4 }}>
+                  Unauthorized copying, distribution, or commercial use is strictly prohibited.
+                </p>
+              </div>
             </div>
-            <div className="footer-item">
-              <strong>Status:</strong>
-              <span>In Development</span>
-            </div>
-            <div className="footer-item">
-              <strong>Target Launch:</strong>
-              <span>Q3 2026</span>
+
+            <div style={{
+              background: 'rgba(251, 191, 36, 0.1)',
+              border: '1px solid rgba(251, 191, 36, 0.3)',
+              borderRadius: '12px',
+              padding: '1rem',
+              display: 'flex',
+              alignItems: 'flex-start',
+              gap: '0.75rem'
+            }}>
+              <div style={{ color: '#fbbf24', marginTop: '0.125rem' }}>⚠️</div>
+              <div>
+                <p style={{ color: 'white', fontWeight: 600, margin: '0 0 0.25rem 0', fontSize: '0.9rem' }}>
+                  Demo Version
+                </p>
+                <p style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '0.8rem', margin: 0, lineHeight: 1.4 }}>
+                  Not for commercial use. All features subject to change.
+                </p>
+              </div>
             </div>
           </div>
-          
-          <div className="footer-sources">
-            <div className="sources-title">Data Sources:</div>
-            <div className="sources-list">
-              <span>• Dominican population: Migration Policy Institute 2024</span>
-              <span>• Remittances: Central Bank of Dominican Republic 2024</span>
-              <span>• Market analysis: World Bank & Inter-American Development Bank</span>
+
+          {/* Copyright Footer */}
+          <div style={{ 
+            borderTop: '1px solid rgba(255, 255, 255, 0.1)', 
+            paddingTop: '2rem',
+            textAlign: 'center'
+          }}>
+            <div style={{ marginBottom: '1rem' }}>
+              <p style={{ color: 'white', fontSize: '1rem', fontWeight: 600, margin: '0 0 0.5rem 0' }}>
+                © 2024 Mayomh11. All Rights Reserved.
+              </p>
+              <p style={{ color: 'rgba(255, 255, 255, 0.7)', fontSize: '0.9rem', margin: 0 }}>
+                PaGaME™ is a trademark of Mayomh11.
+              </p>
             </div>
-          </div>
-          
-          <div className="footer-copyright">
-            <div className="copyright-line">
-              <span>© 2024 Mayomh11. All Rights Reserved.</span>
-              <span>PaGaME™ is a trademark of Mayomh11.</span>
-            </div>
-            <div className="protection-notice">
-              🔒 Proprietary software. Unauthorized copying, distribution, or commercial use is strictly prohibited.
-            </div>
-            <div className="demo-notice">
-              ⚠️ Demo version only. Not for commercial use. All features subject to change.
+            
+            <div style={{
+              display: 'inline-flex',
+              alignItems: 'center',
+              gap: '0.5rem',
+              background: 'rgba(255, 255, 255, 0.05)',
+              padding: '0.5rem 1rem',
+              borderRadius: '20px',
+              border: '1px solid rgba(255, 255, 255, 0.1)'
+            }}>
+              <div style={{
+                width: '24px', height: '24px', background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+                borderRadius: '50%', display: 'flex', alignItems: 'center', justifyContent: 'center'
+              }}>
+                <Star className="h-3 w-3 text-white" />
+              </div>
+              <span style={{ color: 'rgba(255, 255, 255, 0.8)', fontSize: '0.85rem', fontWeight: 500 }}>
+                Built with passion for global financial inclusion
+              </span>
             </div>
           </div>
         </div>
-      </footer>
+      </motion.footer>
       
       <QRCodeModal 
         isOpen={isQRModalOpen} 
